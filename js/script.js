@@ -290,7 +290,7 @@ console.log(str2.join(""));
     towerBuilder(3);
   */
  //получаем число возвращаем строку
- function expandedForm(num) {
+ /*function expandedForm(num) {
   let str=String(num);
   let n=str.length;
   let str1=[];
@@ -309,4 +309,133 @@ console.log(str2.join(""));
 return str1.join(" + ");
 }
 console.log(expandedForm(70304));
-expandedForm(70304);
+expandedForm(70304);*/
+// The constructor takes in an array of items and a integer indicating how many
+// items fit within a single page
+/*function PaginationHelper(collection, itemsPerPage){
+  this.arr=collection;
+  this.items=itemsPerPage;
+}
+
+// returns the number of items within the entire collection
+PaginationHelper.prototype.itemCount = function() {
+ 
+  return this.arr.length;
+}
+
+// returns the number of pages
+PaginationHelper.prototype.pageCount = function() {
+
+  return Math.ceil(this.arr.length/this.items);
+}
+
+// returns the number of items on the current page. page_index is zero based.
+// this method should return -1 for pageIndex values that are out of range
+PaginationHelper.prototype.pageItemCount = function(pageIndex) {
+
+  if(pageIndex===Math.ceil(this.arr.length/this.items)-1)
+  {
+    return this.arr.length-this.items*(Math.ceil(this.arr.length/this.items)-1);
+  }
+  else if(pageIndex<Math.ceil(this.arr.length/this.items)-1)
+  {return this.items;}
+  else{return -1;}
+}
+
+// determines what page an item is on. Zero based indexes
+// this method should return -1 for itemIndex values that are out of range
+PaginationHelper.prototype.pageIndex = function(itemIndex) {
+  if(itemIndex<=this.arr.length && itemIndex>0)
+  {//console.log(Math.ceil(itemIndex/this.items)-1);
+    return Math.ceil(itemIndex/this.items)-1;
+  }
+  else if(itemIndex===0 && this.arr.length!==0)
+  {return 0;}
+  else return -1;
+  
+}
+var helper = new PaginationHelper(['a','b','c','d','e','f'], 4);
+helper.pageCount(); //should == 2
+helper.itemCount(); //should == 6
+helper.pageItemCount(0); //should == 4
+helper.pageItemCount(1); // last page - should == 2
+helper.pageItemCount(2); // should == -1 since the page is invalid
+helper.pageIndex(0);
+console.log(helper.pageIndex(0));*/
+
+//Массив змейка
+/*snail = function(array) {
+let n=array.length;
+let arr=[];
+let arr1=array;
+console.log(array[0].length);
+if(array[0].length===0)
+  {return arr;}
+while(arr1.length>0)
+{
+for(let i=0; i<n; i++)
+  {
+    arr.push(arr1[0][i]);
+  }
+  for(let i=1; i<n; i++)
+  {
+    arr.push(arr1[i][n-1]);
+  }
+  for(let j=n-2; j>=0; j--)
+  {
+    arr.push(arr1[n-1][j]);
+  }
+  for(let k=n-2; k>0; k--)
+  {
+    arr.push(arr1[k][0]);
+  }
+  arr1.shift();
+  arr1.pop();
+  for(let i=0; i<arr1.length; i++)
+  {
+    arr1[i].shift();
+    arr1[i].pop();
+  }
+  n=arr1.length;
+}
+
+  return arr;
+}
+console.log(snail([[]]));
+snail([[]]);*/
+
+//Вернуть пару цифр
+/*function sumPairs(ints, s) {
+ // let min=ints.length-1;
+ const intsSet = new Set();
+ for (let i = 0; i < ints.length; i++) {
+   let currInt = ints[i];
+  // console.log(currInt, intsSet);
+   if (intsSet.has(s - currInt)) return [s - currInt, currInt];
+   else{intsSet.add(currInt);
+   //console.log(intsSet.add(currInt));
+  } 
+ }
+  //return undefined;
+
+}
+console.log(sumPairs([1, 4, 8, 7, 3, 15], 8));
+sumPairs([1, 4, 8, 7, 3, 15], 8);*/
+
+//Найти произведение
+function productFib(prod){
+  let arr=[0, 1];
+  let i=1;
+  let pr=0;
+  do{
+   // f1+=f2;
+    pr=arr[i]*arr[i-1];
+    arr.push(arr[i]+arr[i-1]);
+    console.log(arr, pr);
+    i+=1;
+    
+  }while(pr<prod)
+  return pr===prod? [arr[i-2], arr[i-1], true]: [arr[i-2], arr[i-1], false];
+}
+console.log(productFib(5895));
+productFib(5895);
